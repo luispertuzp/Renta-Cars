@@ -1,0 +1,82 @@
+Create table CLIENT (
+    ID NUMBER (10) NOT NULL,
+	NAME VARCHAR2(4000) NULL
+    EMAIL VARCHAR(20) NULL,
+    AGE NUMBER (10) NULL,
+	PRIMARY KEY (ID)
+
+);
+
+PETICION  GET:
+
+SELECT * FROM CLIENT
+
+
+PETICION  POST:
+
+BEGIN
+    INSERT INTO CLIENT (ID,NAME,EMAIL,AGE)
+    VALUES (:id,:name,:email,:age);
+    :status_code:=201;
+END;
+
+
+PETICION  PUT:
+
+BEGIN
+UPDATE CLIENT SET NAME=:name,EMAIL=:email,AGE=:age WHERE ID=:id;
+:status_code:=201;
+END;
+
+
+PETICION  DELETE: 
+	
+BEGIN
+    DELETE FROM CLIENT WHERE ID=:id;
+    :status_code:=204;    
+END;
+
+
+client/:id
+SELECT * FROM CLIENT WHERE id=:id
+
+
+/*  TABLA MESSAGE   */
+Create table MESSAGE (
+    ID NUMBER (10) NOT NULL,
+    MESSAGETEXT VARCHAR2(4000) 	
+	PRIMARY KEY (ID)
+);
+
+PETICION  GET:
+
+SELECT * FROM MESSAGE
+
+
+PETICION  POST:
+
+BEGIN
+    INSERT INTO MESSAGE (ID,MESSAGETEXT)
+    VALUES (:id,:messagetext);
+    :status_code:=201;
+END;
+
+
+PETICION  PUT:
+
+BEGIN
+UPDATE MESSAGE SET MESSAGETEXT=:messagetext WHERE ID=:id;
+:status_code:=201;
+END;
+
+
+PETICION  DELETE: 
+	
+BEGIN
+    DELETE FROM MESSAGE WHERE ID=:id;
+    :status_code:=204;    
+END;
+
+
+message/:id
+SELECT * FROM MESSAGE WHERE id=:id
